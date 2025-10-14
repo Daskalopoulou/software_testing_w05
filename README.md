@@ -1,4 +1,4 @@
-\# Data Processor - Software Testing Assignment
+# Data Processor - Software Testing Assignment
 
 
 
@@ -6,23 +6,23 @@ A comprehensive data processing toolkit with full test coverage, CI/CD integrati
 
 
 
-\## Features
+## Features
 
 
 
-\- \*\*Data Loading\*\*: Load CSV files with validation
+- \*\*Data Loading\*\*: Load CSV files with validation
 
-\- \*\*Data Cleaning\*\*: Remove null values efficiently
+- \*\*Data Cleaning\*\*: Remove null values efficiently
 
-\- \*\*Data Filtering\*\*: Filter by column values
+- \*\*Data Filtering\*\*: Filter by column values
 
-\- \*\*Statistical Analysis\*\*: Mean, max, and summary statistics
+- \*\*Statistical Analysis\*\*: Mean, max, and summary statistics
 
-\- \*\*Performance Optimized\*\*: Cached operations and vectorized processing
+- \*\*Performance Optimized\*\*: Cached operations and vectorized processing
 
 
 
-\## Project Structure
+## Project Structure
 
 software-testing-assignment/
 
@@ -42,7 +42,7 @@ pytest -v --cov=src/
 
 
 
-\## Run performance profiling:
+## Run performance profiling:
 
 
 
@@ -50,7 +50,7 @@ python scripts/profile\_performance.py --detailed
 
 
 
-\## CI/CD Pipeline
+## CI/CD Pipeline
 
 This project uses GitHub Actions for continuous integration:
 
@@ -72,7 +72,7 @@ Performance benchmarking
 
 
 
-\## Testing Strategy
+## Testing Strategy
 
 Unit Tests: Individual method functionality
 
@@ -90,7 +90,7 @@ Edge Case Tests: Error conditions and boundary values
 
 
 
-\## Performance
+## Performance
 
 The implementation includes:
 
@@ -118,7 +118,7 @@ See scripts/profile\_performance.py for detailed performance analysis.
 
 
 
-\### 5. CI/CD Pipeline
+### 5. CI/CD Pipeline
 
 
 
