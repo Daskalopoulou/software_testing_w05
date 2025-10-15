@@ -126,8 +126,15 @@ class TestStatisticalOperations:
         processor.clean_data()  # Clean data first
 
         mean_value = processor.calculate_mean('value')
-        # After cleaning, values are [10.5, 40.7, 50.1] - mean is (10.5 + 40.7 + 50.1) / 3
-        expected_mean = (10.5 + 40.7 + 50.1) / 3  # This equals 33.76666666666667
+        
+        # After cleaning, we keep rows where neither value nor category is null
+        # Row 1: value=10.5, category='A' - KEEP
+        # Row 2: value=20.3, category='B' - KEEP  
+        # Row 3: value=None, category='A' - REMOVE (value is null)
+        # Row 4: value=40.7, category=None - REMOVE (category is null)
+        # Row 5: value=50.1, category='B' - KEEP
+        # So we keep rows 1, 2, 5: values = [10.5, 20.3, 50.1]
+        expected_mean = (10.5 + 20.3 + 50.1) / 3  # This equals 26.96666666666667
 
         assert mean_value == pytest.approx(expected_mean)
     
