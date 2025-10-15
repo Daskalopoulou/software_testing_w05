@@ -17,24 +17,11 @@ def sample_dataframe():
     })
 
 @pytest.fixture
-def large_performance_data():
-    """Provides a large DataFrame for performance testing."""
-    return pd.DataFrame({
-        'numeric_col': range(10000),
-        'float_col': [x * 1.5 for x in range(10000)],
-        'category_col': ['A', 'B', 'C'] * 3334  # Approximately 10000 rows
-    })
-
-@pytest.fixture
-def temp_csv_file(sample_dataframe):
+def temp_csv_file(tmp_path, sample_dataframe):
     """Creates a temporary CSV file for testing load_data."""
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False) as f:
-        sample_dataframe.to_csv(f.name, index=False)
-        temp_path = f.name
-    
-    yield temp_path
-    # Cleanup
-    os.unlink(temp_path)
+    file = tmp_path / "test_data.csv"
+    sample_dataframe.to_csv(file, index=False)
+    return str(file)
 
 @pytest.fixture
 def empty_dataframe():
