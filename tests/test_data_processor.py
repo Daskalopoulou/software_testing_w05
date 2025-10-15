@@ -142,8 +142,9 @@ class TestStatisticalOperations:
         """Test calculating mean on a column with all null values."""
         processor = DataProcessor()
         # Create a dataframe with a numeric column that has all nulls
+        # We need to explicitly set the dtype to float to ensure it's numeric
         processor.data = pd.DataFrame({
-            'numeric_col': [None, None, None]  # This should be a numeric column with nulls
+            'numeric_col': pd.Series([None, None, None], dtype=float)
         })
         with pytest.raises(ValueError, match="only null values"):
             processor.calculate_mean('numeric_col')
