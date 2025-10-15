@@ -127,7 +127,7 @@ class TestStatisticalOperations:
 
         mean_value = processor.calculate_mean('value')
         # After cleaning, values are [10.5, 40.7, 50.1] - mean is (10.5 + 40.7 + 50.1) / 3
-        expected_mean = (10.5 + 40.7 + 50.1) / 3
+        expected_mean = (10.5 + 40.7 + 50.1) / 3  # This equals 33.76666666666667
 
         assert mean_value == pytest.approx(expected_mean)
     
@@ -138,12 +138,15 @@ class TestStatisticalOperations:
         with pytest.raises(TypeError, match="not numeric"):
             processor.calculate_mean('category')
     
-    def test_calculate_mean_all_null_column(self, all_nulls_dataframe):
+    def test_calculate_mean_all_null_column(self):
         """Test calculating mean on a column with all null values."""
         processor = DataProcessor()
-        processor.data = all_nulls_dataframe
+        # Create a dataframe with a numeric column that has all nulls
+        processor.data = pd.DataFrame({
+            'numeric_col': [None, None, None]  # This should be a numeric column with nulls
+        })
         with pytest.raises(ValueError, match="only null values"):
-            processor.calculate_mean('col1')
+            processor.calculate_mean('numeric_col')
     
     def test_find_max_success(self, sample_dataframe):
         """Test finding the maximum value in a column."""
